@@ -14,6 +14,56 @@
             padding: 0;
         }
 
+        :root {
+            /* Theme Colors */
+            --background-color: #000000;
+            --container-bg: #111111;
+            --text-color: #ffffff;
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --input-focus-bg: rgba(255, 255, 255, 0.1);
+            --button-text: #000000;
+            --button-bg: #ffffff;
+            --results-bg: rgba(255, 255, 255, 0.03);
+            --percentage-color: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            --background-color: #ffffff;
+            --container-bg: #f5f5f5;
+            --text-color: #333333;
+            --input-bg: rgba(0, 0, 0, 0.02);
+            --input-border: rgba(0, 0, 0, 0.1);
+            --input-focus-bg: rgba(0, 0, 0, 0.05);
+            --button-text: #ffffff;
+            --button-bg: #333333;
+            --results-bg: rgba(0, 0, 0, 0.02);
+            --percentage-color: rgba(0, 0, 0, 0.5);
+            --border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--input-focus-bg);
+        }
+
         @font-face {
             font-family: 'Termina';
             src: url('https://db.onlinewebfonts.com/t/0b7ea6daf8dbed7b0f229ad4e668b72e.woff2') format('woff2');
@@ -22,8 +72,8 @@
         body {
             font-family: 'Termina', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #ffffff;
-            background-color: #000000;
+            color: var(--text-color);
+            background-color: var(--background-color);
             display: flex;
             justify-content: center;
             padding: 40px 20px;
@@ -33,20 +83,20 @@
 
         /* Container */
         .container {
-            background-color: #111111;
+            background-color: var(--container-bg);
             padding: 60px 50px;
             border-radius: 2px;
             width: 100%;
             max-width: 900px;
             position: relative;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
         }
 
         /* Typography */
         h1 {
             text-align: left;
-            color: #ffffff;
+            color: var(--text-color);
             margin-bottom: 50px;
             font-size: 2.5em;
             font-weight: 300;
@@ -56,7 +106,7 @@
 
         h2 {
             font-size: 1.2em;
-            color: #ffffff;
+            color: var(--text-color);
             margin: 40px 0 30px;
             font-weight: 400;
             text-transform: uppercase;
@@ -85,19 +135,19 @@
 
         .input-group input[type="number"] {
             padding: 15px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--input-border);
             border-radius: 2px;
             font-size: 1rem;
             width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
+            background: var(--input-bg);
+            color: var(--text-color);
             transition: all 0.3s ease;
         }
 
         .input-group input[type="number"]:focus {
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: var(--input-border);
             outline: none;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--input-focus-bg);
         }
 
         /* Expenses Grid */
@@ -117,7 +167,7 @@
 
         button {
             flex: 1;
-            color: #ffffff;
+            color: var(--button-text);
             border: none;
             padding: 18px 30px;
             border-radius: 2px;
@@ -132,8 +182,8 @@
         }
 
         #calculate-btn {
-            background-color: #ffffff;
-            color: #000000;
+            background-color: var(--button-bg);
+            color: var(--button-text);
         }
 
         #calculate-btn:hover {
@@ -142,20 +192,20 @@
 
         #reset-btn {
             background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--input-border);
         }
 
         #reset-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--input-focus-bg);
         }
 
         /* Results Area */
         #results {
             margin-top: 50px;
             padding: 40px;
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: var(--results-bg);
             border-radius: 2px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -169,7 +219,7 @@
         #results h3 {
             text-align: left;
             margin-bottom: 30px;
-            color: #ffffff;
+            color: var(--text-color);
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -182,7 +232,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
         }
 
         #results p span:first-child {
@@ -194,15 +244,15 @@
 
         #results p span:last-child {
             font-weight: 400;
-            color: #ffffff;
+            color: var(--text-color);
         }
 
         #results p span.percentage {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--percentage-color);
             margin-left: 10px;
         }
 
-        /* Chart Container */
+        /* Chart Container Enhancements */
         .chart-container {
             margin-top: 50px;
             position: relative;
@@ -210,11 +260,52 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+            cursor: pointer;
         }
 
-        .chart-container.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .chart-container:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        /* Chart Legend Enhancement */
+        .chart-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chart-legend-item:hover {
+            background: var(--input-focus-bg);
+        }
+
+        /* Financial Health Indicator */
+        .financial-health {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            transition: all 0.3s ease;
+        }
+
+        .financial-health.good {
+            border-color: #28a745;
+            background: rgba(40, 167, 69, 0.1);
+        }
+
+        .financial-health.warning {
+            border-color: #ffc107;
+            background: rgba(255, 193, 7, 0.1);
+        }
+
+        .financial-health.danger {
+            border-color: #dc3545;
+            background: rgba(220, 53, 69, 0.1);
         }
 
         /* Responsive Design */
@@ -239,50 +330,166 @@
                 padding: 30px 20px;
             }
         }
+
+        /* Currency Selector Styles */
+        .currency-selector {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .currency-selector select {
+            padding: 8px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background: none;
+            color: var(--text-color);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .currency-selector select:hover {
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--container-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            width: 200px;
+            font-size: 0.85rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Info Icon */
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            font-size: 0.7rem;
+            margin-left: 8px;
+            cursor: help;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Vizion Budget Calculator</h1>
+        <button class="theme-toggle" id="theme-toggle">Toggle Theme</button>
+        <div class="currency-selector">
+            <label for="currency">Currency:</label>
+            <select id="currency">
+                <option value="USD" selected>USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+            </select>
+        </div>
+        <h1>CHINGCHING NEGUS</h1>
 
         <!-- Input Form -->
         <form id="budget-form">
             <div class="input-group">
-                <label for="annual-salary">Annual Gross Salary ($):</label>
+                <label for="annual-salary">Annual Gross Salary ($):
+                    <div class="tooltip">
+                        <span class="info-icon">i</span>
+                        <span class="tooltip-text">Your total yearly salary before taxes and deductions. Include bonuses and other regular income.</span>
+                    </div>
+                </label>
                 <input type="number" id="annual-salary" placeholder="e.g., 90000" required min="0" step="100">
-                 <span class="error-message">Please enter a valid annual salary.</span>
             </div>
 
             <h2>Monthly Expenses & Savings ($)</h2>
             <div class="expenses-grid">
                 <div class="input-group">
-                    <label for="rent">Rent/Mortgage:</label>
+                    <label for="rent">Rent/Mortgage:
+                        <div class="tooltip">
+                            <span class="info-icon">i</span>
+                            <span class="tooltip-text">Aim to keep housing costs under 30% of your monthly income for financial stability.</span>
+                        </div>
+                    </label>
                     <input type="number" id="rent" placeholder="e.g., 1500" min="0" value="0">
                 </div>
                 <div class="input-group">
-                    <label for="utilities">Utilities:</label>
+                    <label for="utilities">Utilities:
+                        <div class="tooltip">
+                            <span class="info-icon">i</span>
+                            <span class="tooltip-text">Include electricity, water, gas, internet, and phone bills. Consider energy-efficient options to reduce costs.</span>
+                        </div>
+                    </label>
                     <input type="number" id="utilities" placeholder="e.g., 150" min="0" value="0">
                 </div>
                 <div class="input-group">
-                    <label for="food">Food/Groceries:</label>
+                    <label for="food">Food/Groceries:
+                        <div class="tooltip">
+                            <span class="info-icon">i</span>
+                            <span class="tooltip-text">Plan meals, buy in bulk, and use rewards programs to save on groceries. Aim for a balance between eating out and cooking at home.</span>
+                        </div>
+                    </label>
                     <input type="number" id="food" placeholder="e.g., 400" min="0" value="0">
                 </div>
                 <div class="input-group">
-                    <label for="transportation">Transportation:</label>
+                    <label for="transportation">Transportation:
+                        <div class="tooltip">
+                            <span class="info-icon">i</span>
+                            <span class="tooltip-text">Include car payments, insurance, fuel, maintenance, or public transit costs. Consider cost-effective alternatives like carpooling.</span>
+                        </div>
+                    </label>
                     <input type="number" id="transportation" placeholder="e.g., 100" min="0" value="0">
                 </div>
-                 <div class="input-group">
-                    <label for="personal">Personal/Other:</label>
+                <div class="input-group">
+                    <label for="personal">Personal/Other:
+                        <div class="tooltip">
+                            <span class="info-icon">i</span>
+                            <span class="tooltip-text">Entertainment, shopping, and personal care. Try to limit this to 10-15% of your monthly income.</span>
+                        </div>
+                    </label>
                     <input type="number" id="personal" placeholder="e.g., 200" min="0" value="0">
                 </div>
-                 <div class="input-group">
-                    <label for="debt">Other Debt/Loans:</label>
+                <div class="input-group">
+                    <label for="debt">Other Debt/Loans:
+                        <div class="tooltip">
+                            <span class="info-icon">i</span>
+                            <span class="tooltip-text">Credit cards, student loans, or personal loans. Prioritize high-interest debt and consider debt consolidation.</span>
+                        </div>
+                    </label>
                     <input type="number" id="debt" placeholder="e.g., 300" min="0" value="0">
                 </div>
-                <!-- New Savings Input -->
                 <div class="input-group">
-                    <label for="savings">Monthly Savings Goal:</label>
+                    <label for="savings">Monthly Savings Goal:
+                        <div class="tooltip">
+                            <span class="info-icon">i</span>
+                            <span class="tooltip-text">Aim to save at least 20% of your monthly income. Build an emergency fund covering 3-6 months of expenses.</span>
+                        </div>
+                    </label>
                     <input type="number" id="savings" placeholder="e.g., 500" min="0" value="0">
                 </div>
             </div>
@@ -338,12 +545,15 @@
         const chartCanvas = document.getElementById('budget-chart');
         const calculateBtn = document.getElementById('calculate-btn');
         const resetBtn = document.getElementById('reset-btn');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const currencySelector = document.getElementById('currency');
         let budgetChart = null;
 
         // --- Helper Functions ---
         function formatCurrency(amount) {
             const num = Number(amount) || 0;
-            return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            const currency = currencySelector.value;
+            return num.toLocaleString('en-US', { style: 'currency', currency });
         }
 
         function getInputValueAsNumber(inputElement) {
@@ -358,6 +568,7 @@
         function saveData() {
             const dataToSave = {
                 annualSalary: annualSalaryInput.value,
+                currency: currencySelector.value
             };
             for (const key in expenseInputs) {
                 dataToSave[key] = expenseInputs[key].value;
@@ -374,6 +585,7 @@
                     const data = JSON.parse(savedData);
                     // console.log("Data loaded:", data); // For debugging
                     annualSalaryInput.value = data.annualSalary || '';
+                    currencySelector.value = data.currency || 'USD';
                     for (const key in expenseInputs) {
                         if (data.hasOwnProperty(key)) {
                              // Ensure value exists before setting, default to '0' if needed for number inputs
@@ -509,97 +721,272 @@
             annualSalaryInput.classList.remove('invalid');
         });
 
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+
+        currencySelector.addEventListener('change', () => {
+            calculateAndDisplay();
+        });
 
         /** Updates the budget visualization chart. */
         function updateBudgetChart(bondPayment, expenseValues, remainingIncome) {
-             const ctx = chartCanvas.getContext('2d');
+            const ctx = chartCanvas.getContext('2d');
 
-             const remainingForChart = Math.max(0, remainingIncome);
-             const totalExpenses = Object.values(expenseValues).reduce((sum, val) => sum + val, 0); // Recalculate total expense part if needed separately from savings
+            const remainingForChart = Math.max(0, remainingIncome);
+            
+            // Create detailed data for enhanced chart
+            const chartData = {
+                labels: [
+                    'Bond Payment',
+                    'Rent/Mortgage',
+                    'Utilities',
+                    'Food/Groceries',
+                    'Transportation',
+                    'Personal/Other',
+                    'Other Debt/Loans',
+                    'Savings',
+                    'Remaining'
+                ],
+                datasets: [{
+                    data: [
+                        bondPayment,
+                        expenseValues.rent,
+                        expenseValues.utilities,
+                        expenseValues.food,
+                        expenseValues.transportation,
+                        expenseValues.personal,
+                        expenseValues.debt,
+                        expenseValues.savings,
+                        remainingForChart
+                    ],
+                    backgroundColor: [
+                        '#dc3545',  // Bond - Red
+                        '#fd7e14',  // Rent - Orange
+                        '#ffc107',  // Utilities - Yellow
+                        '#20c997',  // Food - Teal
+                        '#17a2b8',  // Transport - Cyan
+                        '#6f42c1',  // Personal - Purple
+                        '#6c757d',  // Debt - Gray
+                        '#007bff',  // Savings - Blue
+                        '#28a745'   // Remaining - Green
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                    hoverOffset: 15
+                }]
+            };
 
-             // Chart data includes Bond, ALL Expenses + Savings combined, and Remaining
-             const chartData = {
-                 labels: ['Bond Payment', 'Expenses & Savings', 'Remaining'],
-                 datasets: [{
-                     label: 'Monthly Budget Allocation',
-                     data: [bondPayment, totalExpenses, remainingForChart], // Use totalExpenses here which includes savings
-                     backgroundColor: [
-                         '#dc3545', // Red for Bond (matches Bootstrap danger)
-                         '#ffc107', // Yellow/Orange for Expenses/Savings (matches Bootstrap warning)
-                         '#28a745'  // Green for Remaining (matches Bootstrap success)
-                     ],
-                     borderColor: '#ffffff',
-                     borderWidth: 2
-                 }]
-             };
+            if (budgetChart) {
+                budgetChart.destroy();
+            }
 
-             // Alternate Data structure if you wanted to break out savings (more complex pie)
-             /*
-             const chartDataDetailed = {
-                 labels: ['Bond Payment', 'Rent', 'Utilities', 'Food', 'Transport', 'Personal', 'Debt', 'Savings', 'Remaining'],
-                 datasets: [{
-                     label: 'Monthly Budget Allocation',
-                     data: [
-                         bondPayment,
-                         expenseValues.rent,
-                         expenseValues.utilities,
-                         expenseValues.food,
-                         expenseValues.transportation,
-                         expenseValues.personal,
-                         expenseValues.debt,
-                         expenseValues.savings,
-                         remainingForChart
-                     ],
-                     backgroundColor: [ '#dc3545', '#fd7e14', '#ffc107', '#20c997', '#17a2b8', '#6f42c1', '#6c757d', '#007bff', '#28a745' ],
-                     borderColor: '#ffffff',
-                     borderWidth: 2
-                 }]
-             };
-             */
+            budgetChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            onClick: (e, legendItem, legend) => {
+                                const index = legendItem.index;
+                                const ci = legend.chart;
+                                
+                                // Toggle visibility with animation
+                                if (ci.getDatasetMeta(0).data[index].hidden) {
+                                    ci.show(0, index);
+                                } else {
+                                    ci.hide(0, index);
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${formatCurrency(value)} (${percentage}%)`;
+                                }
+                            },
+                            padding: 12,
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            displayColors: true,
+                            animation: {
+                                duration: 150
+                            }
+                        }
+                    },
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true,
+                        duration: 1000,
+                        easing: 'easeInOutQuart'
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const segment = elements[0];
+                            const value = chartData.datasets[0].data[segment.index];
+                            const label = chartData.labels[segment.index];
+                            
+                            // Highlight clicked segment
+                            const activeSegments = budgetChart.getActiveElements();
+                            if (activeSegments.length > 0) {
+                                budgetChart.setActiveElements([]);
+                            } else {
+                                budgetChart.setActiveElements([{
+                                    datasetIndex: 0,
+                                    index: segment.index
+                                }]);
+                            }
+                            budgetChart.update();
+                        }
+                    }
+                }
+            });
+        }
 
-             if (budgetChart) {
-                 budgetChart.destroy();
-             }
+        // --- Theme Management ---
+        function setTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggleBtn.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} theme`);
+        }
 
-             budgetChart = new Chart(ctx, {
-                 type: 'pie', // Or 'doughnut'
-                 data: chartData, // Use the simpler chartData for now
-                 options: {
-                     responsive: true,
-                     maintainAspectRatio: false,
-                     plugins: {
-                         legend: {
-                             position: 'top',
-                         },
-                         title: {
-                             display: true,
-                             text: 'Budget Allocation',
-                             font: { size: 16 }
-                         },
-                         tooltip: {
-                             callbacks: {
-                                 label: function(context) {
-                                     let label = context.label || '';
-                                     if (label) { label += ': '; }
-                                     if (context.parsed !== null) {
-                                         label += formatCurrency(context.parsed);
-                                     }
-                                     // Calculate percentage based on the *dataset total shown in this chart*
-                                     const datasetTotal = context.dataset.data.reduce((acc, value) => acc + value, 0);
-                                     const percentage = datasetTotal > 0 ? ((context.parsed / datasetTotal) * 100).toFixed(1) + '%' : '0%';
-                                     label += ` (${percentage})`;
-                                     return label;
-                                 }
-                             }
-                         }
-                     }
-                 }
-             });
-         }
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            setTheme(savedTheme);
+        }
 
-        // --- Initial Load ---
-        // Load saved data when the page loads
-        document.addEventListener('DOMContentLoaded', loadData);
+        // Update theme toggle event listener
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+
+        // Add keyboard navigation for the chart
+        function initializeChartAccessibility() {
+            chartCanvas.setAttribute('role', 'img');
+            chartCanvas.setAttribute('tabindex', '0');
+            chartCanvas.setAttribute('aria-label', 'Budget allocation pie chart');
+        }
+
+        // Update chart accessibility when data changes
+        function updateChartAccessibility() {
+            if (budgetChart) {
+                const data = budgetChart.data;
+                const total = data.datasets[0].data.reduce((sum, val) => sum + val, 0);
+                const description = data.labels.map((label, i) => {
+                    const value = data.datasets[0].data[i];
+                    const percentage = ((value / total) * 100).toFixed(1);
+                    return `${label}: ${formatCurrency(value)} (${percentage}%)`;
+                }).join('. ');
+                chartCanvas.setAttribute('aria-label', `Budget allocation pie chart showing: ${description}`);
+            }
+        }
+
+        // Add ARIA labels to form inputs
+        function initializeFormAccessibility() {
+            // Add aria-labels to numeric inputs
+            for (const key in expenseInputs) {
+                const input = expenseInputs[key];
+                input.setAttribute('aria-label', `Enter ${input.previousElementSibling.textContent.replace(':', '')}`);
+            }
+            
+            // Add error handling for screen readers
+            annualSalaryInput.setAttribute('aria-invalid', 'false');
+            annualSalaryInput.setAttribute('aria-describedby', 'salary-error');
+        }
+
+        // Update the calculateAndDisplay function to handle accessibility
+        const originalCalculateAndDisplay = calculateAndDisplay;
+        calculateAndDisplay = function() {
+            originalCalculateAndDisplay();
+            updateChartAccessibility();
+            
+            // Update ARIA labels for results
+            resultsDiv.setAttribute('aria-live', 'polite');
+            bondInfoPara.setAttribute('role', 'status');
+        };
+
+        function updateFinancialHealth(monthlyIncome, totalExpenses, bondPayment) {
+            const healthDiv = document.createElement('div');
+            healthDiv.className = 'financial-health';
+            
+            const expenseRatio = (totalExpenses + bondPayment) / monthlyIncome;
+            const savingsRatio = expenseValues.savings / monthlyIncome;
+            
+            let status, message;
+            
+            if (expenseRatio > 1) {
+                status = 'danger';
+                message = 'Warning: Your expenses exceed your income. Consider reducing expenses or finding additional income sources.';
+            } else if (expenseRatio > 0.9) {
+                status = 'warning';
+                message = 'Your expenses are high relative to income. Look for areas where you can cut back.';
+            } else if (savingsRatio < 0.2) {
+                status = 'warning';
+                message = 'Consider increasing your savings to at least 20% of your income for better financial security.';
+            } else {
+                status = 'good';
+                message = 'Great job! Your budget looks healthy with a good balance of expenses and savings.';
+            }
+            
+            healthDiv.classList.add(status);
+            healthDiv.innerHTML = `
+                <h4>Financial Health Status</h4>
+                <p>${message}</p>
+            `;
+            
+            // Insert after results
+            const existingHealth = document.querySelector('.financial-health');
+            if (existingHealth) {
+                existingHealth.remove();
+            }
+            resultsDiv.appendChild(healthDiv);
+        }
+
+        // Update calculateAndDisplay to include financial health check
+        const originalCalculate = calculateAndDisplay;
+        calculateAndDisplay = function() {
+            originalCalculate();
+            
+            const monthlyIncome = getInputValueAsNumber(annualSalaryInput) / 12;
+            const totalExpenses = Object.values(expenseValues).reduce((sum, val) => sum + val, 0);
+            const bondPayment = monthlyIncome >= BOND_THRESHOLD ? monthlyIncome * BOND_PERCENTAGE : 0;
+            
+            updateFinancialHealth(monthlyIncome, totalExpenses, bondPayment);
+        };
+
+        // Initialize accessibility features on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            initializeTheme();
+            initializeFormAccessibility();
+            initializeChartAccessibility();
+        });
+
+        // Handle keyboard navigation for theme toggle
+        themeToggleBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                themeToggleBtn.click();
+            }
+        });
 
     </script>
 
